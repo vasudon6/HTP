@@ -93,12 +93,12 @@ interface AdminContextType {
 }
 
 const DEFAULT_TRANSFORMATIONS = [
-  { id: '1', before: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=800", after: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=800" },
-  { id: '2', before: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=800", after: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=800" },
-  { id: '3', before: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800", after: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=800" },
-  { id: '4', before: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=800", after: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=800" },
-  { id: '5', before: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=800", after: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=800" },
-  { id: '6', before: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800", after: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=800" },
+  { id: '1', before: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=60&w=800", after: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=60&w=800" },
+  { id: '2', before: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=60&w=800", after: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=60&w=800" },
+  { id: '3', before: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=60&w=800", after: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=60&w=800" },
+  { id: '4', before: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=60&w=800", after: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=60&w=800" },
+  { id: '5', before: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=60&w=800", after: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=60&w=800" },
+  { id: '6', before: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=60&w=800", after: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=60&w=800" },
 ];
 
 const DEFAULT_REVIEWS = [
@@ -111,11 +111,11 @@ const DEFAULT_REVIEWS = [
 ];
 
 const DEFAULT_GENERAL_IMAGES = [
-  { id: 'hero-bg', key: 'Hero Background', url: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=2000' },
-  { id: 'clinic-1', key: 'Clinic Interior 1', url: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=600' },
-  { id: 'clinic-2', key: 'Clinic OT Room', url: 'https://images.unsplash.com/photo-1538108149393-cebb47ac1945?auto=format&fit=crop&q=80&w=600' },
-  { id: 'clinic-3', key: 'Clinic Consultation', url: 'https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&q=80&w=600' },
-  { id: 'clinic-4', key: 'Clinic Lounge', url: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=600' },
+  { id: 'hero-bg', key: 'Hero Background', url: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=60&w=2000' },
+  { id: 'clinic-1', key: 'Clinic Interior 1', url: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=60&w=600' },
+  { id: 'clinic-2', key: 'Clinic OT Room', url: 'https://images.unsplash.com/photo-1538108149393-cebb47ac1945?auto=format&fit=crop&q=60&w=600' },
+  { id: 'clinic-3', key: 'Clinic Consultation', url: 'https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&q=60&w=600' },
+  { id: 'clinic-4', key: 'Clinic Lounge', url: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=60&w=600' },
 ];
 
 const DEFAULT_DOCTORS: Doctor[] = [
@@ -125,7 +125,7 @@ const DEFAULT_DOCTORS: Doctor[] = [
     title: "Chief Surgeon",
     qualification: "M.B.B.S, M.D., ABHRS Certified",
     experience: "15+",
-    image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=800",
+    image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=60&w=800",
     description: "Renowned as Central India's leading hair transplant surgeon, Dr. Koshle combines medical precision with an artistic approach to hairline design. With over 10,000 successful procedures, he ensures maximum graft survival and 100% natural-looking results.",
     bullets: [
       { icon: "Award", text: "Diplomate, American Board of Hair Restoration Surgery" },
@@ -139,7 +139,7 @@ const DEFAULT_DOCTORS: Doctor[] = [
     title: "Senior Consultant",
     qualification: "M.B.B.S, M.S. (Plastic Surgery)",
     experience: "12+",
-    image: "https://images.unsplash.com/photo-1594824436951-7f12bc58a7f4?auto=format&fit=crop&q=80&w=800",
+    image: "https://images.unsplash.com/photo-1594824436951-7f12bc58a7f4?auto=format&fit=crop&q=60&w=800",
     description: "Specializing in advanced FUE and female hair restoration, Dr. Desai brings a meticulous eye for detail. Her gentle approach and exceptional hairline designs have earned her widespread acclaim.",
     bullets: [
       { icon: "Award", text: "Gold Medalist in Plastic Surgery" },
@@ -153,7 +153,7 @@ const DEFAULT_DOCTORS: Doctor[] = [
     title: "Transplant Specialist",
     qualification: "M.B.B.S, DDVL",
     experience: "10+",
-    image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=800",
+    image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=60&w=800",
     description: "Dr. Kumar is an expert in high-density grafting and crown restoration. His precise extraction techniques ensure minimal transection and faster recovery times for patients.",
     bullets: [
       { icon: "Award", text: "Member, ISHRS" },
@@ -167,7 +167,7 @@ const DEFAULT_DOCTORS: Doctor[] = [
     title: "Trichologist",
     qualification: "M.B.B.S, Fellowship in Trichology",
     experience: "8+",
-    image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=800",
+    image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=60&w=800",
     description: "Focusing on preventive care and post-operative growth, Dr. Singh oversees our PRP and mesotherapy protocols to maximize the yield of every transplanted graft.",
     bullets: [
       { icon: "Award", text: "Certified Trichologist" },
@@ -181,7 +181,7 @@ const DEFAULT_DOCTORS: Doctor[] = [
     title: "Restoration Surgeon",
     qualification: "M.B.B.S, M.D.",
     experience: "14+",
-    image: "https://images.unsplash.com/photo-1537368910025-7028dd906d3f?auto=format&fit=crop&q=80&w=800",
+    image: "https://images.unsplash.com/photo-1537368910025-7028dd906d3f?auto=format&fit=crop&q=60&w=800",
     description: "A pioneer in beard and eyebrow transplants, Dr. Aditya uses ultra-refined techniques for facial hair restoration, delivering flawlessly natural results.",
     bullets: [
       { icon: "Award", text: "Facial Hair Transplant Pioneer" },

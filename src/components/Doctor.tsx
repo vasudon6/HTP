@@ -16,8 +16,7 @@ const DoctorCard: React.FC<{ doctor: DoctorType, onKnowMore: (d: DoctorType) => 
   return (
     <div className="flex flex-col bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden w-[80vw] sm:w-[320px] md:w-[400px] shrink-0 snap-center group">
       <div className="relative aspect-[4/5] md:aspect-auto md:h-64 overflow-hidden bg-slate-200 flex items-center justify-center">
-        <img 
-          src={image} 
+        <img src={image} 
           alt={doctor.name} 
           className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
           loading="lazy"
@@ -158,7 +157,7 @@ export default function Doctor() {
               
               <div className="overflow-y-auto flex-1 min-h-0">
                 <div className="h-64 relative shrink-0 bg-slate-200 flex items-center justify-center">
-                  <img src={selectedDoctor.image} alt={selectedDoctor.name} className="w-full h-full object-contain" loading="lazy" decoding="async" />
+                  <img src={selectedDoctor.image} alt={selectedDoctor.name} className="w-full h-full object-contain" />
                 </div>
                 
                 <div className="p-6">

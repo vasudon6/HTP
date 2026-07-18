@@ -12,10 +12,10 @@ export default function About() {
 
   // If no dynamic images, fallback to some defaults
   const clinicImagesList = allClinicImages.length > 0 ? allClinicImages : [
-    { url: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=600", key: "Clinic Interior" },
-    { url: "https://images.unsplash.com/photo-1538108149393-cebb47ac1945?auto=format&fit=crop&q=80&w=600", key: "OT Room" },
-    { url: "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&q=80&w=600", key: "Consultation" },
-    { url: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=600", key: "Lounge" },
+    { url: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=60&w=600", key: "Clinic Interior" },
+    { url: "https://images.unsplash.com/photo-1538108149393-cebb47ac1945?auto=format&fit=crop&q=60&w=600", key: "OT Room" },
+    { url: "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&q=60&w=600", key: "Consultation" },
+    { url: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=60&w=600", key: "Lounge" },
   ];
 
   const col1 = clinicImagesList.filter((_, i) => i % 2 === 0);

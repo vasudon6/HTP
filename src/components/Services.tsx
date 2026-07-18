@@ -11,8 +11,7 @@ const ServiceCard: React.FC<{ service: Service; onClick: () => void }> = ({ serv
       onClick={onClick}
     >
       <div className="h-40 w-full overflow-hidden shrink-0 relative">
-        <img 
-          src={service.image} 
+        <img src={service.image} 
           alt={service.title} 
           className="w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-110"
           loading="lazy"
@@ -140,7 +139,7 @@ export default function Services() {
               
               <div className="overflow-y-auto flex-1 min-h-0">
                 <div className="h-48 sm:h-64 relative shrink-0">
-                  <img src={selectedService.image} alt={selectedService.title} className="w-full h-full object-cover" loading="lazy" decoding="async" />
+                  <img src={selectedService.image} alt={selectedService.title} className="w-full h-full object-cover" />
                 </div>
                 
                 <div className="p-6">

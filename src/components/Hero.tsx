@@ -4,7 +4,7 @@ import { useAdmin } from '../store/AdminContext';
 
 export default function Hero() {
   const { publicData } = useAdmin();
-  const heroImage = publicData.generalImages.find(img => img.id === 'hero-bg')?.url || "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=1200";
+  const heroImage = publicData.generalImages.find(img => img.id === 'hero-bg')?.url || "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=60&w=1200";
 
   const letterAnimation = {
     hidden: { opacity: 0, y: 50 },
@@ -81,8 +81,8 @@ export default function Hero() {
                 className="flex items-center gap-3 cursor-default"
               >
                 <div className="flex -space-x-2">
-                  <div className="w-10 h-10 rounded-full bg-slate-200 border-2 border-white overflow-hidden hover:z-10 transition-transform hover:scale-110 duration-200"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80" alt="Patient" loading="lazy" decoding="async" /></div>
-                  <div className="w-10 h-10 rounded-full bg-slate-300 border-2 border-white overflow-hidden hover:z-10 transition-transform hover:scale-110 duration-200"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&q=80" alt="Patient" loading="lazy" decoding="async" /></div>
+                  <div className="w-10 h-10 rounded-full bg-slate-200 border-2 border-white overflow-hidden hover:z-10 transition-transform hover:scale-110 duration-200"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=60" alt="Patient" loading="lazy" decoding="async" /></div>
+                  <div className="w-10 h-10 rounded-full bg-slate-300 border-2 border-white overflow-hidden hover:z-10 transition-transform hover:scale-110 duration-200"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&q=60" alt="Patient" loading="lazy" decoding="async" /></div>
                   <div className="w-10 h-10 rounded-full bg-slate-400 border-2 border-white overflow-hidden flex items-center justify-center text-xs font-bold text-white bg-teal-600 hover:z-10 transition-transform hover:scale-110 duration-200">5k+</div>
                 </div>
                 <span className="text-xs font-bold text-slate-500 flex flex-col">
