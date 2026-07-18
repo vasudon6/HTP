@@ -1,22 +1,70 @@
 import React, { useState } from 'react';
 import { useAdmin, Booking, Transformation, Review, GeneralImage } from '../store/AdminContext';
-import { Trash2, CheckCircle, XCircle, Clock, Plus, GripVertical, Image as ImageIcon, Video, Save, X, Eye } from 'lucide-react';
+import { Trash2, CheckCircle, XCircle, Clock, Plus, GripVertical, Image as ImageIcon, Video, Save, X, Eye, Settings, Calendar, MessageSquare, Users, Briefcase, Database, ChevronLeft, ChevronRight, Stethoscope, Bot } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import toast from 'react-hot-toast';
 
 function AdminTabs({ active, setActive }: { active: string, setActive: (t: string) => void }) {
-  const tabs = ['AI Settings', 'Bookings', 'Queries', 'Transformations', 'Video Reviews', 'General Images', 'Doctors', 'Services', 'Backup & Vercel'];
+  const tabs = [
+    { name: 'AI Settings', icon: Bot },
+    { name: 'Bookings', icon: Calendar },
+    { name: 'Queries', icon: MessageSquare },
+    { name: 'Transformations', icon: ImageIcon },
+    { name: 'Video Reviews', icon: Video },
+    { name: 'General Images', icon: ImageIcon },
+    { name: 'Doctors', icon: Users },
+    { name: 'Services', icon: Stethoscope }
+  ];
+
+  const scrollContainerRef = React.useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = 200;
+      scrollContainerRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
-    <div className="flex gap-2 overflow-x-auto pb-4 mb-6 scrollbar-hide">
-      {tabs.map(t => (
-        <button 
-          key={t}
-          onClick={() => setActive(t)}
-          className={`px-4 py-2 rounded-lg font-bold text-sm whitespace-nowrap transition-colors ${active === t ? 'bg-teal-600 text-white' : 'bg-white text-slate-600 hover:bg-slate-50 border border-slate-200'}`}
-        >
-          {t}
-        </button>
-      ))}
+    <div className="relative mb-6 group flex items-center bg-white p-2 rounded-2xl shadow-sm border border-slate-200">
+      <button 
+        onClick={() => scroll('left')}
+        className="absolute left-0 z-10 w-8 h-8 md:w-10 md:h-10 ml-1 bg-white/95 backdrop-blur-sm rounded-full shadow-md border border-slate-200 text-slate-600 hover:text-teal-600 hover:bg-teal-50 hover:scale-110 transition-all flex items-center justify-center"
+      >
+        <ChevronLeft size={20} />
+      </button>
+      
+      <div 
+        ref={scrollContainerRef}
+        className="flex gap-2 overflow-x-auto scrollbar-hide w-full px-8 sm:px-2 scroll-smooth py-1"
+      >
+        {tabs.map(t => {
+          const Icon = t.icon;
+          const isActive = active === t.name;
+          return (
+            <motion.button 
+              key={t.name}
+              onClick={() => setActive(t.name)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm whitespace-nowrap transition-all ${isActive ? 'bg-teal-600 text-white shadow-lg shadow-teal-600/20' : 'bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-100'}`}
+            >
+              <Icon size={16} className={isActive ? 'animate-pulse' : ''} />
+              {t.name}
+            </motion.button>
+          );
+        })}
+      </div>
+
+      <button 
+        onClick={() => scroll('right')}
+        className="absolute right-0 z-10 w-8 h-8 md:w-10 md:h-10 mr-1 bg-white/95 backdrop-blur-sm rounded-full shadow-md border border-slate-200 text-slate-600 hover:text-teal-600 hover:bg-teal-50 hover:scale-110 transition-all flex items-center justify-center"
+      >
+        <ChevronRight size={20} />
+      </button>
     </div>
   );
 }
@@ -128,44 +176,43 @@ export default function AdminDashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 p-4 md:p-8">
+    <div className="min-h-screen bg-slate-50 p-3 md:p-8 pb-24 md:pb-8">
       <div className="max-w-6xl mx-auto space-y-6">
         
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-4 md:p-6 rounded-2xl shadow-sm border border-slate-200">
           <div>
-            <h1 className="text-2xl font-extrabold text-slate-900">Admin Dashboard</h1>
-            <p className="text-slate-500 text-sm mt-1">Manage bookings and website content.</p>
+            <h1 className="text-xl md:text-2xl font-extrabold text-slate-900">Admin Dashboard</h1>
+            <p className="text-slate-500 text-xs md:text-sm mt-1">Manage bookings and website content.</p>
           </div>
-          <div className="flex items-center gap-3">
-            <button 
-              onClick={discardChanges}
-              className="px-4 py-2 bg-red-50 text-red-600 font-bold rounded-xl hover:bg-red-100 transition-colors flex items-center gap-2 text-sm"
-            >
-              <X size={16} /> Discard Draft
-            </button>
-            <button 
-              onClick={publishChanges}
-              className="px-6 py-2 bg-teal-600 text-white font-bold rounded-xl hover:bg-teal-700 transition-colors flex items-center gap-2 text-sm shadow-lg shadow-teal-600/20"
-            >
-              <Save size={16} /> Publish Changes
-            </button>
+          <div className="flex items-center gap-2 md:gap-3 flex-wrap">
             <button 
               onClick={() => {
                 setIsAuthenticated(false);
                 sessionStorage.removeItem('vasu_admin_auth');
                 toast.success('Logged out successfully');
               }}
-              className="px-4 py-2 bg-slate-900 text-white font-bold rounded-xl hover:bg-red-600 transition-colors text-sm ml-4"
+              className="px-3 md:px-4 py-2 bg-slate-900 text-white font-bold rounded-xl hover:bg-red-600 transition-colors text-xs md:text-sm order-3 md:order-last md:ml-4"
             >
               Logout
             </button>
+            <button 
+              onClick={discardChanges}
+              className="flex-1 md:flex-none px-3 md:px-4 py-2 bg-red-50 text-red-600 font-bold rounded-xl hover:bg-red-100 transition-colors flex items-center justify-center gap-2 text-xs md:text-sm"
+            >
+              <X size={16} /> <span className="hidden sm:inline">Discard Draft</span><span className="sm:hidden">Discard</span>
+            </button>
+            <button 
+              onClick={publishChanges}
+              className="flex-1 md:flex-none px-4 md:px-6 py-2 bg-teal-600 text-white font-bold rounded-xl hover:bg-teal-700 transition-colors flex items-center justify-center gap-2 text-xs md:text-sm shadow-lg shadow-teal-600/20"
+            >
+              <Save size={16} /> Publish
+            </button>
           </div>
         </div>
-
         <AdminTabs active={activeTab} setActive={setActiveTab} />
 
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 min-h-[500px]">
+        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 md:p-6 min-h-[500px]">
           {activeTab === 'AI Settings' && (
             <div className="space-y-6 max-w-2xl">
               <div className="flex justify-between items-center">
@@ -173,7 +220,7 @@ export default function AdminDashboard() {
               </div>
               <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200">
                 <label className="block text-sm font-bold text-slate-700 mb-2">Gemini API Key</label>
-                                <div className="flex gap-4">
+                                <div className="flex flex-col sm:flex-row gap-4">
                   <input 
                     type="password" 
                     value={draftData.aiApiKey || ''}
@@ -731,9 +778,9 @@ export default function AdminDashboard() {
             </div>
           )}
 
-        </div>
+
+                  </div>
       </div>
-      
       <AnimatePresence>
         {selectedMessage && (
           <motion.div 

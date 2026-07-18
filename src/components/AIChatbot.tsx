@@ -70,20 +70,20 @@ ${publicData.clinicContext || 'No additional context provided by admin.'}
         <motion.div
           animate={{ y: [0, -6, 0], scale: [1, 1.05, 1] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          className="bg-gradient-to-r from-emerald-500 to-teal-600 text-white text-xs px-3 py-1.5 sm:text-sm font-bold sm:px-4 sm:py-2 rounded-full shadow-[0_4px_20px_rgba(16,185,129,0.5)] whitespace-nowrap border border-white/20 relative"
+          className="bg-gradient-to-r from-emerald-500 to-teal-600 text-white text-xs px-3 py-1.5 lg:text-sm font-bold lg:px-4 lg:py-2 rounded-full shadow-[0_4px_20px_rgba(16,185,129,0.5)] whitespace-nowrap border border-white/20 relative"
         >
           Ask anything ✨
-          <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 sm:w-2.5 sm:h-2.5 bg-teal-600 rotate-45 border-r border-b border-white/20"></div>
+          <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 lg:w-2.5 lg:h-2.5 bg-teal-600 rotate-45 border-r border-b border-white/20"></div>
         </motion.div>
         
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => setIsOpen(true)}
-          className="w-12 h-12 sm:w-16 sm:h-16 bg-teal-600 text-white rounded-full flex items-center justify-center shadow-[0_8px_30px_rgba(13,148,136,0.4)]"
+          className="w-12 h-12 lg:w-16 lg:h-16 bg-teal-600 text-white rounded-full flex items-center justify-center shadow-[0_8px_30px_rgba(13,148,136,0.4)]"
           aria-label="Open AI Assistant"
         >
-          <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7" />
+          <MessageCircle className="w-6 h-6 lg:w-7 lg:h-7" />
         </motion.button>
       </div>
 

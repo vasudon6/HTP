@@ -7,7 +7,7 @@ export default function WhatsApp() {
       href="https://wa.me/919876543210"
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-24 sm:bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 bg-green-500 text-white rounded-full shadow-2xl hover:bg-green-600 transition-colors"
+      className="fixed bottom-24 left-4 sm:left-auto sm:right-6 lg:bottom-6 lg:left-6 z-50 flex items-center justify-center w-14 h-14 bg-green-500 text-white rounded-full shadow-2xl hover:bg-green-600 transition-colors"
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
       animate={{
