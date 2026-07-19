@@ -54,7 +54,7 @@ export default function WhyChooseUs() {
                 hover: { y: -5, boxShadow: "0 10px 30px -10px rgba(20, 184, 166, 0.2)" }
               }}
               className="p-8 rounded-2xl bg-slate-50 border border-slate-200 hover:border-teal-300 transition-all duration-300 group/usp flex flex-col relative overflow-hidden cursor-pointer"
-              onClick={() => setSelectedUsp(usp)}
+              
             >
               <div className="absolute inset-0 bg-gradient-to-br from-teal-50/50 to-emerald-50/50 opacity-0 group-hover/usp:opacity-100 transition-opacity duration-300"></div>
               
@@ -71,17 +71,7 @@ export default function WhyChooseUs() {
                   </motion.div>
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover/usp:text-teal-800 transition-colors">{usp.title}</h3>
-                <p className="text-slate-500 text-sm leading-relaxed mb-4 flex-1 line-clamp-2">{usp.desc}</p>
-                <div className="mt-auto flex items-center text-teal-600 text-xs font-bold uppercase tracking-wider group/btn">
-                  <span>Read More</span>
-                  <motion.span 
-                    initial={{ x: -5, opacity: 0 }} 
-                    whileInView={{ x: 0, opacity: 1 }} 
-                    className="ml-1 opacity-0 -translate-x-2 group-hover/usp:opacity-100 group-hover/usp:translate-x-0 transition-all duration-300"
-                  >
-                    →
-                  </motion.span>
-                </div>
+                <p className="text-slate-500 text-sm leading-relaxed mb-4 flex-1">{usp.fullDesc}</p>
               </div>
             </motion.div>
           ))}

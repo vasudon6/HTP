@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { MoreVertical, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,15 +28,17 @@ export default function Navbar() {
         </div>
         
         <div className="hidden xl:flex flex-1 items-center justify-end gap-6 text-sm font-medium text-slate-600 ml-4">
-          <a href="#top" className="hover:text-teal-600 transition-colors shrink-0">Home</a>
-          <a href="#results" className="hover:text-teal-600 transition-colors shrink-0">Transformation</a>
-          <a href="#reviews" className="hover:text-teal-600 transition-colors shrink-0">Review</a>
-          <a href="#doctor" className="hover:text-teal-600 transition-colors shrink-0">Doctor</a>
-          <a href="#why-choose-us" className="hover:text-teal-600 transition-colors shrink-0">Why Choose Us</a>
-          <a href="#process" className="hover:text-teal-600 transition-colors shrink-0">Process</a>
-          <a href="#calculator" className="hover:text-teal-600 transition-colors shrink-0">Cost</a>
-          <a href="#about" className="hover:text-teal-600 transition-colors shrink-0">Clinic</a>
-          <a href="#contact" className="hover:text-teal-600 transition-colors shrink-0">Contact Us</a>
+          <Link to="/#top" className="hover:text-teal-600 transition-colors shrink-0">Home</Link>
+          <Link to="/#results" className="hover:text-teal-600 transition-colors shrink-0">Transformation</Link>
+          <Link to="/#reviews" className="hover:text-teal-600 transition-colors shrink-0">Review</Link>
+          <Link to="/#doctor" className="hover:text-teal-600 transition-colors shrink-0">Doctor</Link>
+          <Link to="/#why-choose-us" className="hover:text-teal-600 transition-colors shrink-0">Why Choose Us</Link>
+          <Link to="/#process" className="hover:text-teal-600 transition-colors shrink-0">Process</Link>
+          <Link to="/#calculator" className="hover:text-teal-600 transition-colors shrink-0">Cost</Link>
+          <Link to="/#about" className="hover:text-teal-600 transition-colors shrink-0">Clinic</Link>
+          <Link to="/blog" className="hover:text-teal-600 transition-colors shrink-0">Blog</Link>
+          <Link to="/#faq" className="hover:text-teal-600 transition-colors shrink-0">FAQ</Link>
+          <Link to="/#contact" className="hover:text-teal-600 transition-colors shrink-0">Contact Us</Link>
         </div>
 
         {/* Tablet Menu Button */}
@@ -58,15 +61,17 @@ export default function Navbar() {
             className="hidden sm:block xl:hidden absolute top-full left-0 right-0 bg-white border-b border-slate-200 shadow-xl overflow-hidden"
           >
             <div className="flex flex-col py-4 px-6 gap-4 text-sm font-medium text-slate-600">
-              <a href="#top" onClick={() => setIsMenuOpen(false)} className="hover:text-teal-600 transition-colors">Home</a>
-              <a href="#results" onClick={() => setIsMenuOpen(false)} className="hover:text-teal-600 transition-colors">Transformation</a>
-              <a href="#reviews" onClick={() => setIsMenuOpen(false)} className="hover:text-teal-600 transition-colors">Review</a>
-              <a href="#doctor" onClick={() => setIsMenuOpen(false)} className="hover:text-teal-600 transition-colors">Doctor</a>
-              <a href="#why-choose-us" onClick={() => setIsMenuOpen(false)} className="hover:text-teal-600 transition-colors">Why Choose Us</a>
-              <a href="#process" onClick={() => setIsMenuOpen(false)} className="hover:text-teal-600 transition-colors">Process</a>
-              <a href="#calculator" onClick={() => setIsMenuOpen(false)} className="hover:text-teal-600 transition-colors">Cost</a>
-              <a href="#about" onClick={() => setIsMenuOpen(false)} className="hover:text-teal-600 transition-colors">Clinic</a>
-              <a href="#contact" onClick={() => setIsMenuOpen(false)} className="hover:text-teal-600 transition-colors">Contact Us</a>
+              <Link to="/#top" onClick={() => setIsMenuOpen(false)} className="hover:text-teal-600 transition-colors">Home</Link>
+              <Link to="/#results" onClick={() => setIsMenuOpen(false)} className="hover:text-teal-600 transition-colors">Transformation</Link>
+              <Link to="/#reviews" onClick={() => setIsMenuOpen(false)} className="hover:text-teal-600 transition-colors">Review</Link>
+              <Link to="/#doctor" onClick={() => setIsMenuOpen(false)} className="hover:text-teal-600 transition-colors">Doctor</Link>
+              <Link to="/#why-choose-us" onClick={() => setIsMenuOpen(false)} className="hover:text-teal-600 transition-colors">Why Choose Us</Link>
+              <Link to="/#process" onClick={() => setIsMenuOpen(false)} className="hover:text-teal-600 transition-colors">Process</Link>
+              <Link to="/#calculator" onClick={() => setIsMenuOpen(false)} className="hover:text-teal-600 transition-colors">Cost</Link>
+              <Link to="/#about" onClick={() => setIsMenuOpen(false)} className="hover:text-teal-600 transition-colors">Clinic</Link>
+              <Link to="/blog" onClick={() => setIsMenuOpen(false)} className="hover:text-teal-600 transition-colors">Blog</Link>
+              <Link to="/#faq" onClick={() => setIsMenuOpen(false)} className="hover:text-teal-600 transition-colors">FAQ</Link>
+              <Link to="/#contact" onClick={() => setIsMenuOpen(false)} className="hover:text-teal-600 transition-colors">Contact Us</Link>
             </div>
           </motion.div>
         )}

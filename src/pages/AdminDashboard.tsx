@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 
 function AdminTabs({ active, setActive }: { active: string, setActive: (t: string) => void }) {
   const tabs = [
-    { name: 'AI Settings', icon: Bot },
+        { name: 'AI Settings', icon: Bot },
     { name: 'Bookings', icon: Calendar },
     { name: 'Queries', icon: MessageSquare },
     { name: 'Transformations', icon: ImageIcon },
@@ -218,61 +218,84 @@ export default function AdminDashboard() {
               <div className="flex justify-between items-center">
                 <h2 className="text-xl font-bold text-slate-900">AI Chatbot Settings</h2>
               </div>
+              
               <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200">
                 <label className="block text-sm font-bold text-slate-700 mb-2">Gemini API Key</label>
-                                <div className="flex flex-col sm:flex-row gap-4">
+                <div className="flex flex-col sm:flex-row gap-4">
                   <input 
                     type="password" 
                     value={draftData.aiApiKey || ''}
                     onChange={(e) => setDraftData(prev => ({ ...prev, aiApiKey: e.target.value }))}
+                    onCopy={(e) => e.preventDefault()}
+                    onCut={(e) => e.preventDefault()}
                     placeholder="Enter your Gemini API Key..."
                     className="flex-1 px-4 py-2 bg-white border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 transition-colors"
                   />
-                  <button
-                    onClick={publishChanges}
-                    className="px-6 py-2 bg-teal-600 text-white font-bold rounded-xl hover:bg-teal-700 transition-colors shadow-sm whitespace-nowrap"
-                  >
-                    Save
-                  </button>
+                  <div className="flex gap-2 w-full sm:w-auto">
+                    <button
+                      onClick={() => {
+                        setDraftData(prev => ({ ...prev, aiApiKey: '' }));
+                      }}
+                      className="flex-1 sm:flex-none px-4 py-2 bg-red-100 text-red-600 font-bold rounded-xl hover:bg-red-200 transition-colors shadow-sm whitespace-nowrap"
+                    >
+                      Delete
+                    </button>
+                    <button
+                      onClick={publishChanges}
+                      className="flex-1 sm:flex-none px-4 py-2 bg-teal-600 text-white font-bold rounded-xl hover:bg-teal-700 transition-colors shadow-sm whitespace-nowrap"
+                    >
+                      Save
+                    </button>
+                  </div>
                 </div>
               </div>
-              <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200 mt-6">
+
+              <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200">
                 <label className="block text-sm font-bold text-slate-700 mb-2">Clinic Knowledge Base (Context for AI)</label>
-                                <textarea
+                <textarea
                   value={draftData.clinicContext || ''}
                   onChange={(e) => setDraftData(prev => ({ ...prev, clinicContext: e.target.value }))}
                   placeholder="Enter detailed information about your clinic, services, pricing, FAQs, etc. The AI Chatbot will read this to answer customer questions."
-                  className="w-full px-4 py-3 bg-white border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 transition-colors h-48 resize-y"
+                  className="w-full px-4 py-3 bg-white border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 transition-colors h-48 resize-y mb-4"
                 />
-                <div className="flex justify-between items-start mt-4 gap-4">
-                  <p className="text-xs text-slate-500 mt-2">
+                
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                  <p className="text-xs text-slate-500">
                     Write in detail about your clinic so the AI can learn from it and answer customer questions accurately.
                   </p>
-                  <button
-                    onClick={publishChanges}
-                    className="px-6 py-2 bg-teal-600 text-white font-bold rounded-xl hover:bg-teal-700 transition-colors shadow-sm whitespace-nowrap"
-                  >
-                    Save
-                  </button>
+                  <div className="flex gap-3 w-full sm:w-auto">
+                    <button
+                      onClick={() => {
+                        setDraftData(prev => ({ ...prev, clinicContext: '' }));
+                      }}
+                      className="flex-1 sm:flex-none px-6 py-2 bg-red-100 text-red-600 font-bold rounded-xl hover:bg-red-200 transition-colors shadow-sm whitespace-nowrap"
+                    >
+                      Delete
+                    </button>
+                    <button
+                      onClick={publishChanges}
+                      className="flex-1 sm:flex-none px-6 py-2 bg-teal-600 text-white font-bold rounded-xl hover:bg-teal-700 transition-colors shadow-sm whitespace-nowrap"
+                    >
+                      Save
+                    </button>
+                  </div>
                 </div>
               </div>
-
             </div>
           )}
-
           {activeTab === 'Bookings' && (
             <div className="space-y-4">
-              <h2 className="text-xl font-bold text-slate-900 mb-6">Patient Bookings</h2>
+              <h2 className="text-xl font-bold text-slate-900 mb-6">Consultation Bookings</h2>
               {bookings.length === 0 ? (
                 <div className="text-center text-slate-400 py-12">No bookings yet.</div>
               ) : (
                 <div className="grid gap-4">
                   {bookings.map(b => (
-                    <div key={b.id} className="p-4 rounded-xl border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
-                      <div>
-                        <div className="flex items-center gap-3 mb-2">
-                          <h3 className="font-bold text-slate-900 text-lg">{b.name}</h3>
-                          <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${
+                    <div key={b.id} className="p-4 rounded-xl border border-slate-200 bg-white flex justify-between items-start gap-4">
+                      <div className="space-y-2 flex-1">
+                        <div className="flex items-center gap-3">
+                          <h3 className="font-bold text-slate-900">{b.name}</h3>
+                          <span className={`px-2 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider ${
                             b.status === 'confirmed' ? 'bg-emerald-100 text-emerald-700' :
                             b.status === 'cancelled' ? 'bg-red-100 text-red-700' :
                             'bg-amber-100 text-amber-700'
@@ -280,8 +303,8 @@ export default function AdminDashboard() {
                             {b.status}
                           </span>
                         </div>
-                        <p className="text-sm text-slate-600 mb-1">
-                          <strong>{b.service}</strong> ({b.type})
+                        <p className="text-sm text-slate-600 font-medium">
+                          {b.service} - {b.type}
                         </p>
                         <div className="text-xs text-slate-500 flex flex-wrap items-center gap-4">
                           <span>{b.phone}</span>
@@ -420,7 +443,7 @@ export default function AdminDashboard() {
                           />
                           {t.before && (
                             <div className="w-full aspect-square rounded-lg overflow-hidden bg-slate-100 border border-slate-200">
-                              <img src={t.before} alt="Before preview" className="w-full h-full object-cover" onError={(e) => (e.currentTarget.style.display = 'none')} />
+                              <img src={t.before} alt="Before preview" className="w-full h-full object-cover" onError={(e) => (e.currentTarget.style.display = 'none')} loading="lazy" decoding="async" />
                             </div>
                           )}
                         </div>
@@ -439,7 +462,7 @@ export default function AdminDashboard() {
                           />
                           {t.after && (
                             <div className="w-full aspect-square rounded-lg overflow-hidden bg-slate-100 border border-slate-200">
-                              <img src={t.after} alt="After preview" className="w-full h-full object-cover" onError={(e) => (e.currentTarget.style.display = 'none')} />
+                              <img src={t.after} alt="After preview" className="w-full h-full object-cover" onError={(e) => (e.currentTarget.style.display = 'none')} loading="lazy" decoding="async" />
                             </div>
                           )}
                         </div>
@@ -549,7 +572,7 @@ export default function AdminDashboard() {
                   <div key={img.id} className="p-4 border border-slate-200 rounded-xl bg-slate-50 flex flex-col md:flex-row gap-6 items-start relative">
                     {img.url && (
                       <div className="w-full md:w-32 aspect-video md:aspect-square rounded-lg overflow-hidden bg-slate-100 border border-slate-200 shrink-0">
-                        <img src={img.url} alt={img.key} className="w-full h-full object-cover" onError={(e) => (e.currentTarget.style.display = 'none')} />
+                        <img src={img.url} alt={img.key} className="w-full h-full object-cover" onError={(e) => (e.currentTarget.style.display = 'none')} loading="lazy" decoding="async" />
                       </div>
                     )}
                     <div className="flex-1 w-full space-y-4 pr-12">
@@ -643,7 +666,7 @@ export default function AdminDashboard() {
                           }} className="w-full p-2 border border-slate-200 rounded-lg text-sm" placeholder="https://..." />
                           {doctor.image && (
                             <div className="w-32 h-40 rounded-lg overflow-hidden bg-slate-100 border border-slate-200 shrink-0">
-                              <img src={doctor.image} alt="Preview" className="w-full h-full object-cover" onError={(e) => (e.currentTarget.style.display = 'none')} />
+                              <img src={doctor.image} alt="Preview" className="w-full h-full object-cover" onError={(e) => (e.currentTarget.style.display = 'none')} loading="lazy" decoding="async" />
                             </div>
                           )}
                         </div>
@@ -760,7 +783,7 @@ export default function AdminDashboard() {
                           }} className="w-full p-2 border border-slate-200 rounded-lg text-sm" placeholder="https://..." />
                           {service.image && (
                             <div className="w-48 h-32 rounded-lg overflow-hidden bg-slate-100 border border-slate-200 shrink-0">
-                              <img src={service.image} alt="Preview" className="w-full h-full object-cover" onError={(e) => (e.currentTarget.style.display = 'none')} />
+                              <img src={service.image} alt="Preview" className="w-full h-full object-cover" onError={(e) => (e.currentTarget.style.display = 'none')} loading="lazy" decoding="async" />
                             </div>
                           )}
                         </div>

@@ -7,8 +7,8 @@ const STEPS = [
     id: 1,
     icon: FileSignature, 
     title: "1. Consultation", 
-    desc: "Detailed scalp analysis, hairline design, and graft estimation.",
-    fullDesc: "Our journey begins with a comprehensive 3D scalp analysis and medical history review. Dr. Koshle will personally evaluate your donor area density, calculate the exact number of grafts needed, and design a custom hairline that matches your age, facial proportions, and future hair loss progression. You will receive a transparent, step-by-step roadmap for your restoration.",
+    desc: "Our journey begins with a comprehensive 3D scalp analysis and medical history review. Dr. Koshle will personally evaluate your donor area density and design a custom hairline.",
+    fullDesc: "Our journey begins with a comprehensive 3D scalp analysis and medical history review. Dr. Koshle will personally evaluate your donor area density, calculate the exact number of grafts needed, and design a custom hairline that matches your age, facial proportions, and future hair loss progression. During this in-depth consultation, we also discuss your lifestyle, medical background, and set realistic expectations. You will receive a transparent, step-by-step roadmap for your restoration, detailing the exact techniques to be used and the projected timeline for new growth.",
     animProps: {
       rest: { rotate: 0 },
       hover: { rotate: [0, -10, 10, -10, 0], transition: { duration: 2, repeat: Infinity, repeatDelay: 1 } }
@@ -18,8 +18,8 @@ const STEPS = [
     id: 2,
     icon: Syringe, 
     title: "2. Preparation", 
-    desc: "Medical clearance, hairline marking, and painless anesthesia administration.",
-    fullDesc: "On the day of surgery, we start with vital checks and final hairline marking. We use a revolutionary Painless Anesthesia Protocol (without traditional needles) to numb the donor and recipient areas. This ensures you remain completely comfortable, relaxed, and awake while watching a movie or listening to music during the procedure.",
+    desc: "On the day of surgery, we start with vital checks and final hairline marking. We use a revolutionary Painless Anesthesia Protocol to numb the areas.",
+    fullDesc: "On the day of surgery, we start with vital checks and final hairline marking, ensuring you are 100% satisfied with the design before we begin. We use a revolutionary Painless Anesthesia Protocol (without traditional needles) to numb the donor and recipient areas. This advanced method uses high-frequency vibrations and specialized local anesthetic mixtures to ensure you remain completely comfortable, relaxed, and awake. Many of our patients even fall asleep, watch movies, or listen to music during the entire preparation phase.",
     animProps: {
       rest: { y: 0 },
       hover: { y: [0, -6, 0], transition: { duration: 2, repeat: Infinity, ease: "easeInOut" } }
@@ -29,8 +29,8 @@ const STEPS = [
     id: 3,
     icon: Sparkles, 
     title: "3. Extraction & Implantation", 
-    desc: "Precise follicle extraction and artistic implantation for maximum density.",
-    fullDesc: "Using ultra-refined sapphire punches (0.7mm - 0.9mm), individual follicles are meticulously extracted to prevent scarring. The grafts are preserved in a specialized hypothermosol solution. Finally, using the Direct Hair Implantation (DHI) technique, each follicle is implanted at the exact angle, depth, and direction of natural hair growth to ensure maximum density and survival.",
+    desc: "Using ultra-refined sapphire punches, individual follicles are meticulously extracted. Then, using the Direct Hair Implantation (DHI) technique, each follicle is implanted.",
+    fullDesc: "Using ultra-refined sapphire punches (0.7mm - 0.9mm), individual follicles are meticulously extracted to prevent scarring and protect the donor area's integrity. The grafts are carefully sorted under high-magnification microscopes and preserved in a specialized hypothermosol solution. Finally, using the advanced Direct Hair Implantation (DHI) technique with Choi Implanter Pens, each follicle is implanted at the exact angle, depth, and direction of your natural hair growth. This guarantees maximum density, a completely natural look, and optimal graft survival.",
     animProps: {
       rest: { scale: 1, rotate: 0 },
       hover: { scale: [1, 1.2, 1], rotate: [0, 90, 180], transition: { duration: 3, repeat: Infinity, ease: "easeInOut" } }
@@ -40,8 +40,8 @@ const STEPS = [
     id: 4,
     icon: HeartHandshake, 
     title: "4. Aftercare", 
-    desc: "Detailed recovery protocol, follow-ups, and PRPs for enhanced growth.",
-    fullDesc: "Post-surgery, you will rest in our premium recovery lounge. We provide a comprehensive aftercare kit, including medications, specialized shampoos, and a customized sleep pillow. Our care team schedules regular follow-ups (Day 3, Day 10, Month 1, 3, 6, 12) and administers PRP sessions to accelerate healing and boost hair follicle growth.",
+    desc: "Post-surgery, you will rest in our premium recovery lounge. We provide a comprehensive aftercare kit, including medications and specialized shampoos.",
+    fullDesc: "Post-surgery, you will rest in our premium recovery lounge where our team will brief you on post-op instructions. We provide a comprehensive aftercare kit, including all necessary medications, specialized healing shampoos, and a customized neck pillow for safe sleeping. Our dedicated care team schedules regular mandatory follow-ups (Day 3, Day 10, Month 1, 3, 6, 12) to monitor your progress. We also administer complimentary PRP (Platelet-Rich Plasma) sessions at key intervals to accelerate healing, reduce shedding, and significantly boost hair follicle growth.",
     animProps: {
       rest: { scale: 1 },
       hover: { scale: [1, 1.1, 1], transition: { duration: 1.5, repeat: Infinity, ease: "easeInOut" } }

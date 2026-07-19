@@ -1,6 +1,8 @@
 import { motion } from 'motion/react';
 import { MapPin, Users, Award, Calendar } from 'lucide-react';
 import { useAdmin } from '../store/AdminContext';
+import { Link } from 'react-router-dom';
+
 
 export default function About() {
   const { publicData } = useAdmin();
@@ -13,7 +15,7 @@ export default function About() {
   // If no dynamic images, fallback to some defaults
   const clinicImagesList = allClinicImages.length > 0 ? allClinicImages : [
     { url: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=60&w=600", key: "Clinic Interior" },
-    { url: "https://images.unsplash.com/photo-1538108149393-cebb47ac1945?auto=format&fit=crop&q=60&w=600", key: "OT Room" },
+    { url: "https://res.cloudinary.com/yfn8ptmo/image/upload/v1784215462/clinic-2_jq1ta5.jpg", key: "OT Room" },
     { url: "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&q=60&w=600", key: "Consultation" },
     { url: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=60&w=600", key: "Lounge" },
   ];
@@ -140,8 +142,31 @@ export default function About() {
               </div>
             </motion.div>
           </div>
+
+          <div className="mt-8">
+            <Link to="/clinic">
+              <motion.button 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 bg-teal-600 text-white font-bold rounded-full overflow-hidden shadow-lg shadow-teal-600/30 hover:shadow-teal-600/50 hover:bg-teal-700 transition-all duration-300"
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  Know More About Us
+                  <motion.span
+                    initial={{ x: 0 }}
+                    animate={{ x: [0, 5, 0] }}
+                    transition={{ repeat: Infinity, duration: 1.5 }}
+                  >
+                    →
+                  </motion.span>
+                </span>
+                <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-teal-400 to-teal-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"></div>
+              </motion.button>
+            </Link>
+          </div>
         </motion.div>
       </div>
     </section>
   );
+
 }

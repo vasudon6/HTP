@@ -11,12 +11,9 @@ const ServiceCard: React.FC<{ service: Service; onClick: () => void }> = ({ serv
       onClick={onClick}
     >
       <div className="h-40 w-full overflow-hidden shrink-0 relative">
-        <img src={service.image} 
-          alt={service.title} 
+        <img src={service.image} loading="lazy" decoding="async" alt={service.title} 
           className="w-full h-full object-cover transition-transform duration-700 group-hover/card:scale-110"
-          loading="lazy"
-          decoding="async"
-        />
+          loading="lazy" decoding="async" />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"></div>
       </div>
       <div className="p-5 flex flex-col flex-1 relative bg-white">
@@ -139,7 +136,7 @@ export default function Services() {
               
               <div className="overflow-y-auto flex-1 min-h-0">
                 <div className="h-48 sm:h-64 relative shrink-0">
-                  <img src={selectedService.image} alt={selectedService.title} className="w-full h-full object-cover" />
+                  <img src={selectedService.image} alt={selectedService.title} className="w-full h-full object-cover"  loading="lazy" decoding="async" />
                 </div>
                 
                 <div className="p-6">

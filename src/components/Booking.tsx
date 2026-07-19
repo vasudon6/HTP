@@ -15,13 +15,32 @@ export default function Booking({ isPopup = false, onComplete }: { isPopup?: boo
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [phoneError, setPhoneError] = useState('');
+  const [emailError, setEmailError] = useState('');
 
   const submitBooking = () => {
+    setPhoneError('');
+    setEmailError('');
+    let hasError = false;
+
     if (!name || !phone || !date || !time || !service || !type) {
       toast.error("Please fill in all required details.");
       return;
     }
-    addBooking({ name, phone, email, service, type, date, time, message });
+
+    if (phone.length !== 10) {
+      setPhoneError('please enter writte mobile number');
+      hasError = true;
+    }
+
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setEmailError('please enter write email');
+      hasError = true;
+    }
+
+    if (hasError) return;
+
+    addBooking({ name, phone: '+91' + phone, email, service, type, date, time, message });
     localStorage.setItem('has_booked_consultation', 'true');
     setStep(2);
   };
@@ -101,8 +120,10 @@ export default function Booking({ isPopup = false, onComplete }: { isPopup?: boo
                       <label className="text-xs font-bold text-slate-500 uppercase">Phone Number</label>
                       <div className="relative">
                         <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
-                        <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="+91" className={`w-full pl-12 pr-4 ${isPopup ? 'py-3' : 'py-4'} rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 transition-all`} />
+                        <span className="absolute left-10 top-1/2 -translate-y-1/2 text-slate-600 font-medium">+91</span>
+                        <input type="tel" value={phone} onChange={(e) => {setPhone(e.target.value.replace(/\D/g, '').slice(0, 10)); setPhoneError('');}} placeholder="9876543210" className={`w-full pl-20 pr-4 ${isPopup ? 'py-3' : 'py-4'} rounded-xl border ${phoneError ? 'border-red-500 focus:ring-red-500/20 focus:border-red-500' : 'border-slate-200 focus:ring-teal-500/20 focus:border-teal-500'} focus:outline-none focus:ring-2 transition-all`} />
                       </div>
+                      {phoneError && <p className="text-red-500 text-xs mt-1">{phoneError}</p>}
                     </div>
 
                     <div className="space-y-2 md:col-span-2">
@@ -117,7 +138,21 @@ export default function Booking({ isPopup = false, onComplete }: { isPopup?: boo
                       <label className="text-xs font-bold text-slate-500 uppercase">Preferred Date</label>
                       <div className="relative">
                         <CalendarIcon className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
-                        <input type="date" value={date} onChange={(e) => setDate(e.target.value)} className={`w-full pl-12 pr-4 ${isPopup ? 'py-3' : 'py-4'} rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 transition-all text-slate-600`} />
+                        <input 
+                          type="date" 
+                          min={new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().split('T')[0]}
+                          value={date} 
+                          onChange={(e) => {
+                            const d = new Date(e.target.value);
+                            if (d.getDay() === 0) {
+                              toast.error("Sunday is not available for booking. Please select another date.");
+                              setDate('');
+                            } else {
+                              setDate(e.target.value);
+                            }
+                          }} 
+                          className={`w-full pl-12 pr-4 ${isPopup ? 'py-3' : 'py-4'} rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 transition-all text-slate-600`} 
+                        />
                       </div>
                     </div>
 

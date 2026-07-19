@@ -4,11 +4,16 @@ import { MessageCircle, X, Send } from 'lucide-react';
 import { useAdmin } from '../store/AdminContext';
 
 export default function AIChatbot() {
-  const { publicData } = useAdmin();
+  const { publicData, addBooking } = useAdmin();
+  
+  
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<{ role: 'user' | 'model', text: string }[]>([]);
+  const [messages, setMessages] = useState<{ role: 'user' | 'model', text: string, isBookingForm?: boolean }[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [phoneInput, setPhoneInput] = useState('');
+  const [phoneError, setPhoneError] = useState('');
+  const [emailError, setEmailError] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -52,7 +57,7 @@ ${publicData.clinicContext || 'No additional context provided by admin.'}
       const data = await response.json();
       
       if (response.ok) {
-        setMessages(prev => [...prev, { role: 'model', text: data.reply }]);
+        setMessages(prev => [...prev, { role: 'model', text: data.reply, isBookingForm: data.showBookingForm }]);
       } else {
         setMessages(prev => [...prev, { role: 'model', text: 'माफ़ कीजिए, कोई तकनीकी समस्या आई है।' }]);
       }
@@ -119,19 +124,142 @@ ${publicData.clinicContext || 'No additional context provided by admin.'}
                 </div>
               )}
               {messages.map((msg, idx) => (
-                <div 
-                  key={idx} 
-                  className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
-                >
+                <div key={idx} className="flex flex-col gap-2">
                   <div 
-                    className={`max-w-[85%] rounded-2xl px-4 py-2 text-sm ${
-                      msg.role === 'user' 
-                        ? 'bg-teal-600 text-white rounded-tr-sm' 
-                        : 'bg-white text-slate-700 border border-slate-200 rounded-tl-sm shadow-sm'
-                    }`}
+                    className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                   >
-                    {msg.text}
+                    <div 
+                      className={`max-w-[85%] rounded-2xl px-4 py-2 text-sm ${
+                        msg.role === 'user' 
+                          ? 'bg-teal-600 text-white rounded-tr-sm' 
+                          : 'bg-white text-slate-700 border border-slate-200 rounded-tl-sm shadow-sm'
+                      }`}
+                    >
+                      {msg.text}
+                    </div>
                   </div>
+                  {msg.isBookingForm && (
+                    <div className="flex justify-start w-full">
+                      <div className="w-[90%] bg-white border border-slate-200 rounded-2xl p-4 shadow-sm text-sm">
+                        <form onSubmit={(e) => {
+                          e.preventDefault();
+                          const formData = new FormData(e.currentTarget);
+                          const p = formData.get('phone') as string;
+                          const email = formData.get('email') as string;
+                          let hasErr = false;
+                          if (p.length !== 10) {
+                            setPhoneError('please enter writte mobile number');
+                            hasErr = true;
+                          }
+                          if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                            setEmailError('please enter write email');
+                            hasErr = true;
+                          }
+                          if (hasErr) return;
+                          
+                          setPhoneError('');
+                          setEmailError('');
+                          
+                          const aiBooking = {
+                            name: formData.get('name') as string,
+                            phone: '+91' + p,
+                            email: email,
+                            service: formData.get('service') as string,
+                            type: formData.get('type') as string,
+                            date: formData.get('date') as string,
+                            time: formData.get('time') as string,
+                            message: formData.get('message') as string,
+                          };
+                          
+                            addBooking(aiBooking);
+                            
+                            // Let the user know
+                            setMessages(prev => {
+                              const newMessages = [...prev];
+                              // Remove the form flag from the previous message so it doesn't render again
+                              if (newMessages.length > 0) {
+                                newMessages[newMessages.length - 1].isBookingForm = false;
+                              }
+                              return [...newMessages, { role: 'user', text: "Booking Details Submitted" }];
+                            });
+                            setTimeout(() => {
+                              setMessages(prev => [...prev, { role: 'model', text: "आपकी अपॉइंटमेंट सफलतापूर्वक बुक हो गई है। हम जल्द ही आपसे संपर्क करेंगे। धन्यवाद!" }]);
+                            }, 500);
+                          
+                        }} className="flex flex-col gap-3">
+                          <input required name="name" type="text" placeholder="Full Name *" className="w-full border border-slate-200 rounded-lg px-3 py-1.5 focus:outline-none focus:border-teal-500" />
+                          <div>
+                            <div className="relative">
+                              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-600 font-medium">+91</span>
+                              <input required name="phone" type="tel" value={phoneInput} onChange={(e) => {setPhoneInput(e.target.value.replace(/\D/g, '').slice(0, 10)); setPhoneError('');}} placeholder="9876543210" className={`w-full pl-12 pr-3 py-1.5 border ${phoneError ? 'border-red-500 focus:border-red-500 outline-none ring-2 ring-red-500/20' : 'border-slate-200 focus:border-teal-500 outline-none'} rounded-lg`} />
+                            </div>
+                            {phoneError && <p className="text-red-500 text-xs mt-1">{phoneError}</p>}
+                          </div>
+                          <div>
+                            <input required name="email" type="email" onChange={() => setEmailError('')} placeholder="Email Address *" className={`w-full px-3 py-1.5 border ${emailError ? 'border-red-500 focus:border-red-500 outline-none ring-2 ring-red-500/20' : 'border-slate-200 focus:border-teal-500 outline-none'} rounded-lg`} />
+                            {emailError && <p className="text-red-500 text-xs mt-1">{emailError}</p>}
+                          </div>
+                          
+                          <select required name="service" className="w-full border border-slate-200 rounded-lg px-3 py-1.5 focus:outline-none focus:border-teal-500 bg-white">
+                            <option value="">Select Service *</option>
+                            {publicData.services?.map((s: any) => (
+                              <option key={s.id} value={s.title}>{s.title}</option>
+                            ))}
+                            <option value="General Consultation">General Consultation</option>
+                          </select>
+                          
+                          <select required name="type" className="w-full border border-slate-200 rounded-lg px-3 py-1.5 focus:outline-none focus:border-teal-500 bg-white">
+                            <option value="In-Clinic">In-Clinic Visit</option>
+                            <option value="Video Call">Video Call</option>
+                          </select>
+                          
+                          <input 
+                            required 
+                            name="date" 
+                            type="date" 
+                            min={new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().split('T')[0]}
+                            onChange={(e) => {
+                              const d = new Date(e.target.value);
+                              if (d.getDay() === 0) {
+                                alert("Sunday is not available for booking. Please select another date.");
+                                e.target.value = '';
+                              }
+                            }}
+                            className="w-full border border-slate-200 rounded-lg px-3 py-1.5 focus:outline-none focus:border-teal-500 text-slate-700" 
+                          />
+                          
+                          <select required name="time" className="w-full border border-slate-200 rounded-lg px-3 py-1.5 focus:outline-none focus:border-teal-500 bg-white">
+                            <option value="">Select Time *</option>
+                            <option value="10:00 AM">10:00 AM</option>
+                            <option value="10:30 AM">10:30 AM</option>
+                            <option value="11:00 AM">11:00 AM</option>
+                            <option value="11:30 AM">11:30 AM</option>
+                            <option value="12:00 PM">12:00 PM</option>
+                            <option value="12:30 PM">12:30 PM</option>
+                            <option value="01:00 PM">01:00 PM</option>
+                            <option value="01:30 PM">01:30 PM</option>
+                            <option value="02:00 PM">02:00 PM</option>
+                            <option value="02:30 PM">02:30 PM</option>
+                            <option value="03:00 PM">03:00 PM</option>
+                            <option value="03:30 PM">03:30 PM</option>
+                            <option value="04:00 PM">04:00 PM</option>
+                            <option value="04:30 PM">04:30 PM</option>
+                            <option value="05:00 PM">05:00 PM</option>
+                            <option value="05:30 PM">05:30 PM</option>
+                            <option value="06:00 PM">06:00 PM</option>
+                            <option value="06:30 PM">06:30 PM</option>
+                            <option value="07:00 PM">07:00 PM</option>
+                          </select>
+                          
+                          <textarea name="message" placeholder="Problem Details (Optional)" rows={2} className="w-full border border-slate-200 rounded-lg px-3 py-1.5 focus:outline-none focus:border-teal-500 resize-none"></textarea>
+                          
+                          <button type="submit" className="w-full bg-teal-600 text-white rounded-lg py-2 font-medium hover:bg-teal-700 transition-colors">
+                            Book Appointment
+                          </button>
+                        </form>
+                      </div>
+                    </div>
+                  )}
                 </div>
               ))}
               {isLoading && (

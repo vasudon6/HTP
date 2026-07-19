@@ -1,17 +1,20 @@
-import { Home, Image, Calculator, CalendarCheck, Video, Stethoscope, Building2 } from 'lucide-react';
+import { Home, Image, Calculator, CalendarCheck, Video, Stethoscope, Building2, HelpCircle, BookOpen } from 'lucide-react';
 import { motion } from 'motion/react';
+import { Link } from 'react-router-dom';
 
 export default function MobileNav() {
   const leftItems = [
-    { icon: Home, label: 'Home', href: '#top' },
-    { icon: Building2, label: 'Clinic', href: '#about' },
-    { icon: Image, label: 'Results', href: '#results' },
+    { icon: Home, label: 'Home', href: '/#top' },
+    { icon: Building2, label: 'Clinic', href: '/#about' },
+    { icon: BookOpen, label: 'Blog', href: '/blog' },
+    { icon: Image, label: 'Results', href: '/#results' },
   ];
   
   const rightItems = [
-    { icon: Video, label: 'Reviews', href: '#reviews' },
-    { icon: Calculator, label: 'Cost', href: '#calculator' },
-    { icon: Stethoscope, label: 'Doctor', href: '#doctor' },
+    { icon: Video, label: 'Reviews', href: '/#reviews' },
+    { icon: Calculator, label: 'Cost', href: '/#calculator' },
+    { icon: HelpCircle, label: 'FAQ', href: '/#faq' },
+    { icon: Stethoscope, label: 'Doctor', href: '/#doctor' },
   ];
 
   return (
@@ -22,9 +25,8 @@ export default function MobileNav() {
       <div className="flex justify-between items-end h-[68px] px-2 relative pb-2 w-full">
         
         {leftItems.map((item, i) => (
-          <a
-            key={i}
-            href={item.href}
+          <Link
+            key={i} to={item.href}
             className="flex flex-col items-center justify-end h-full pb-1 text-slate-500 hover:text-teal-600 transition-colors active:text-teal-700 relative w-full group"
           >
             <motion.div
@@ -35,12 +37,11 @@ export default function MobileNav() {
               <item.icon size={20} className="mb-1 group-hover:text-teal-600 transition-colors" />
             </motion.div>
             <span className="text-[8px] font-bold tracking-wide">{item.label}</span>
-          </a>
+          </Link>
         ))}
 
         {/* Center Booking Button */}
-        <a 
-          href="#booking"
+        <Link to="/#booking"
           className="flex flex-col items-center justify-end h-full text-slate-500 pb-1 relative group w-full"
         >
           <motion.div 
@@ -60,12 +61,11 @@ export default function MobileNav() {
             <CalendarCheck size={24} className="text-white" />
           </motion.div>
           <span className="text-[8px] font-bold tracking-wide text-teal-700 mt-6 relative top-[2px]">Book</span>
-        </a>
+        </Link>
 
         {rightItems.map((item, i) => (
-          <a
-            key={i}
-            href={item.href}
+          <Link
+            key={i} to={item.href}
             className="flex flex-col items-center justify-end h-full pb-1 text-slate-500 hover:text-teal-600 transition-colors active:text-teal-700 relative w-full group"
           >
             <motion.div
@@ -76,7 +76,7 @@ export default function MobileNav() {
               <item.icon size={20} className="mb-1 group-hover:text-teal-600 transition-colors" />
             </motion.div>
             <span className="text-[8px] font-bold tracking-wide whitespace-nowrap">{item.label}</span>
-          </a>
+          </Link>
         ))}
       </div>
     </div>

@@ -13,6 +13,8 @@ import Calculator from '../components/Calculator';
 import About from '../components/About';
 import Booking from '../components/Booking';
 import Contact from '../components/Contact';
+import FAQ from '../components/FAQ';
+import GoogleReviews from '../components/GoogleReviews';
 
 const AIChatbot = React.lazy(() => import('../components/AIChatbot'));
 
@@ -54,6 +56,12 @@ export default function PublicSite() {
         </div>
         <div id="contact">
           <Contact />
+        </div>
+        <div id="faq">
+          <FAQ />
+        </div>
+        <div id="google-reviews">
+          <GoogleReviews />
         </div>
       </main>
       <Footer />

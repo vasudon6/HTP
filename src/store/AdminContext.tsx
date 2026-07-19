@@ -15,6 +15,8 @@ export type Booking = {
   createdAt: string;
 };
 
+
+
 export type Transformation = {
   id: string;
   before: string;
@@ -93,27 +95,29 @@ interface AdminContextType {
 }
 
 const DEFAULT_TRANSFORMATIONS = [
-  { id: '1', before: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=60&w=800", after: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=60&w=800" },
-  { id: '2', before: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=60&w=800", after: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=60&w=800" },
-  { id: '3', before: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=60&w=800", after: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=60&w=800" },
-  { id: '4', before: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=60&w=800", after: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=60&w=800" },
-  { id: '5', before: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=60&w=800", after: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=60&w=800" },
-  { id: '6', before: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=60&w=800", after: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=60&w=800" },
+  { id: '1', before: "https://res.cloudinary.com/yfn8ptmo/image/upload/v1784187716/HTP_1_BE_apucfz.jpg", after: "https://res.cloudinary.com/yfn8ptmo/image/upload/v1784187792/HTP_1_AF_q0h0wq.jpg" },
+  { id: '2', before: "https://res.cloudinary.com/yfn8ptmo/image/upload/v1784188095/HTP_3_BE_ltmwbv.jpg", after: "https://res.cloudinary.com/yfn8ptmo/image/upload/v1784188105/HTP_3_AF_poj1on.jpg" },
+  { id: '3', before: "https://res.cloudinary.com/yfn8ptmo/image/upload/v1784188092/HTP_4_BE_gq6mjo.jpg", after: "https://res.cloudinary.com/yfn8ptmo/image/upload/v1784188093/HTP_4_AF_tvlez6.jpg" },
+  { id: '4', before: "https://res.cloudinary.com/yfn8ptmo/image/upload/v1784188086/HTP_5_BE_m1wrha.jpg", after: "https://res.cloudinary.com/yfn8ptmo/image/upload/v1784188106/HTP_5_AF_m6wjbx.jpg" },
+  { id: '5', before: "https://res.cloudinary.com/yfn8ptmo/image/upload/v1784188080/HTP_6_BE_o8g4ov.jpg", after: "https://res.cloudinary.com/yfn8ptmo/image/upload/v1784188085/HTP_6_AF_yklnp6.jpg" },
+  { id: '6', before: "https://res.cloudinary.com/yfn8ptmo/image/upload/v1784188079/HTP_7_BE_uopdid.jpg", after: "https://res.cloudinary.com/yfn8ptmo/image/upload/v1784188067/HTP_7AF_qjlxlq.jpg" },
+  { id: '7', before: "https://res.cloudinary.com/yfn8ptmo/image/upload/v1784188077/HTP_8_BE_yigyfn.jpg", after: "https://res.cloudinary.com/yfn8ptmo/image/upload/v1784188079/HTP_8_AF_np77pf.jpg" },
+  { id: '8', before: "https://res.cloudinary.com/yfn8ptmo/image/upload/v1784188980/HTP_10_BE_bforrh.jpg", after: "https://res.cloudinary.com/yfn8ptmo/image/upload/v1784188084/HTP_10_AF_l1l4he.jpg" }
 ];
 
 const DEFAULT_REVIEWS = [
-  { id: '1', name: "Rahul S.", outcome: "3000 Grafts", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600" },
-  { id: '2', name: "Amit P.", outcome: "4500 Grafts", image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600" },
-  { id: '3', name: "Vikram K.", outcome: "Crown Restoration", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=600" },
-  { id: '4', name: "Suresh M.", outcome: "2500 Grafts", image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600" },
-  { id: '5', name: "Rajat D.", outcome: "Hairline Fix", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600" },
-  { id: '6', name: "Nitin Y.", outcome: "5000 Grafts", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=600" },
+  { id: '1', name: "Rahul S.", outcome: "3000 Grafts", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600", videoUrl: "https://youtube.com/shorts/Ry21kp2nncg?si=rf7-bKdJdDJX8cSF" },
+  { id: '2', name: "Amit P.", outcome: "4500 Grafts", image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600", videoUrl: "https://youtube.com/shorts/P6jFfHv5dIE?si=HKxvuiqN0glsBYG2" },
+  { id: '3', name: "Vikram K.", outcome: "Crown Restoration", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=600", videoUrl: "https://youtube.com/shorts/kxlflcDl7as?si=C6zjQr0fuUgRl4T9" },
+  { id: '4', name: "Suresh M.", outcome: "2500 Grafts", image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600", videoUrl: "https://youtube.com/shorts/TTsgSNXNFRY?si=QXe1yZZlJzNn83Z_" },
+  { id: '5', name: "Rajat D.", outcome: "Hairline Fix", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600", videoUrl: "https://youtube.com/shorts/v9tFL2cpLxw?si=hyy1hdd7_iv7NWEL" },
+  { id: '6', name: "Nitin Y.", outcome: "5000 Grafts", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=600", videoUrl: "https://youtube.com/shorts/EqeKzTOUtVE?si=362UWNj_MJm7zkiA" },
 ];
 
 const DEFAULT_GENERAL_IMAGES = [
-  { id: 'hero-bg', key: 'Hero Background', url: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=60&w=2000' },
+  { id: 'hero-bg', key: 'Hero Background', url: 'https://res.cloudinary.com/yfn8ptmo/image/upload/v1784274462/Gemini_Generated_Image_bokkn8bokkn8bokk_bqdmq8.png' },
   { id: 'clinic-1', key: 'Clinic Interior 1', url: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=60&w=600' },
-  { id: 'clinic-2', key: 'Clinic OT Room', url: 'https://images.unsplash.com/photo-1538108149393-cebb47ac1945?auto=format&fit=crop&q=60&w=600' },
+  { id: 'clinic-2', key: 'Clinic OT Room', url: 'https://res.cloudinary.com/yfn8ptmo/image/upload/v1784215462/clinic-2_jq1ta5.jpg' },
   { id: 'clinic-3', key: 'Clinic Consultation', url: 'https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&q=60&w=600' },
   { id: 'clinic-4', key: 'Clinic Lounge', url: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=60&w=600' },
 ];
@@ -125,7 +129,7 @@ const DEFAULT_DOCTORS: Doctor[] = [
     title: "Chief Surgeon",
     qualification: "M.B.B.S, M.D., ABHRS Certified",
     experience: "15+",
-    image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=60&w=800",
+    image: "https://res.cloudinary.com/yfn8ptmo/image/upload/v1784211663/istockphoto-177373093-612x612_ayuplq.jpg",
     description: "Renowned as Central India's leading hair transplant surgeon, Dr. Koshle combines medical precision with an artistic approach to hairline design. With over 10,000 successful procedures, he ensures maximum graft survival and 100% natural-looking results.",
     bullets: [
       { icon: "Award", text: "Diplomate, American Board of Hair Restoration Surgery" },
@@ -139,7 +143,7 @@ const DEFAULT_DOCTORS: Doctor[] = [
     title: "Senior Consultant",
     qualification: "M.B.B.S, M.S. (Plastic Surgery)",
     experience: "12+",
-    image: "https://images.unsplash.com/photo-1594824436951-7f12bc58a7f4?auto=format&fit=crop&q=60&w=800",
+    image: "https://res.cloudinary.com/yfn8ptmo/image/upload/v1784211725/indian-female-doctor-22957497_mtfk5q.webp",
     description: "Specializing in advanced FUE and female hair restoration, Dr. Desai brings a meticulous eye for detail. Her gentle approach and exceptional hairline designs have earned her widespread acclaim.",
     bullets: [
       { icon: "Award", text: "Gold Medalist in Plastic Surgery" },
@@ -181,7 +185,7 @@ const DEFAULT_DOCTORS: Doctor[] = [
     title: "Restoration Surgeon",
     qualification: "M.B.B.S, M.D.",
     experience: "14+",
-    image: "https://images.unsplash.com/photo-1537368910025-7028dd906d3f?auto=format&fit=crop&q=60&w=800",
+    image: "https://res.cloudinary.com/yfn8ptmo/image/upload/v1784211771/mature-indian-doctor-smiling-portrait-male-medical-uniform-standing-plain-background-shadow-61211828_wu16i6.webp",
     description: "A pioneer in beard and eyebrow transplants, Dr. Aditya uses ultra-refined techniques for facial hair restoration, delivering flawlessly natural results.",
     bullets: [
       { icon: "Award", text: "Facial Hair Transplant Pioneer" },
@@ -192,12 +196,14 @@ const DEFAULT_DOCTORS: Doctor[] = [
 ];
 
 const DEFAULT_SERVICES: Service[] = [
-  { id: '1', title: "Hair Transplant", description: "Advanced FUE hair transplant for natural looking results with maximum density.", image: "https://images.unsplash.com/photo-1585728748176-455ac5eedfa0?auto=format&fit=crop&w=600" },
-  { id: '2', title: "PRP Therapy", description: "Platelet Rich Plasma therapy to stimulate hair follicles and promote new growth.", image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600" },
-  { id: '3', title: "Beard Transplant", description: "Restore or enhance your facial hair with precision beard transplantation.", image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=600" },
-  { id: '4', title: "Eyebrow Transplant", description: "Perfectly shaped and dense eyebrows using ultra-refined extraction techniques.", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600" },
+  { id: '1', title: "Hair Transplant", description: "Advanced FUE hair transplant for natural looking results with maximum density.", image: "https://res.cloudinary.com/yfn8ptmo/image/upload/v1784272944/htp_awucfz.jpg" },
+  { id: '2', title: "PRP Therapy", description: "Platelet Rich Plasma therapy to stimulate hair follicles and promote new growth.", image: "https://res.cloudinary.com/yfn8ptmo/image/upload/v1784272469/images_4_xormtu.jpg" },
+  { id: '3', title: "Beard Transplant", description: "Restore or enhance your facial hair with precision beard transplantation.", image: "https://res.cloudinary.com/yfn8ptmo/image/upload/v1784272223/beard_transplant_iytgez.jpg" },
+  { id: '4', title: "Eyebrow Transplant", description: "Perfectly shaped and dense eyebrows using ultra-refined extraction techniques.", image: "https://res.cloudinary.com/yfn8ptmo/image/upload/v1784272693/eyevbrow_transplant_likpu3.jpg" },
   { id: '5', title: "Hair Loss Treatment", description: "Comprehensive medical treatments to stop hair fall and improve scalp health.", image: "https://images.unsplash.com/photo-1537368910025-7028dd906d3f?auto=format&fit=crop&w=600" },
   { id: '6', title: "Mesotherapy", description: "Nutrient-rich microinjections to rejuvenate the scalp and stimulate new hair growth.", image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600" },
+  { id: '7', title: "DHI Hair Transplant", description: "Direct Hair Implantation for maximum graft survival and perfectly natural direction.", image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=600" },
+  { id: '8', title: "Female Hair Transplant", description: "Specialized FUE techniques for female pattern baldness and hairline lowering.", image: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=600" },
 ];
 
 const DEFAULT_DATA: AppData = {
@@ -217,6 +223,8 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
     return saved ? JSON.parse(saved) : [];
   });
 
+  
+
   const [queries, setQueries] = useState<Query[]>(() => {
     const saved = localStorage.getItem('vasu_queries');
     return saved ? JSON.parse(saved) : [];
@@ -232,25 +240,75 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
       
       // Add missing default images
       DEFAULT_GENERAL_IMAGES.forEach(defaultImg => {
-        if (!mergedGeneralImages.find(img => img.id === defaultImg.id)) {
+        const existing = mergedGeneralImages.find(img => img.id === defaultImg.id);
+        if (!existing) {
           mergedGeneralImages.push(defaultImg);
+        } else if ((existing.id === 'hero-bg' || existing.id === 'clinic-2') && existing.url.includes('unsplash.com')) {
+          existing.url = defaultImg.url;
         }
       });
+      
+      let mergedTransformations = parsed.transformations || [];
+      const hasUnsplash = mergedTransformations.some(t => t.before.includes('unsplash.com') || t.after.includes('unsplash.com'));
+      if (hasUnsplash || mergedTransformations.length === 0) {
+        mergedTransformations = DEFAULT_TRANSFORMATIONS;
+      }
       
       let mergedDoctors = parsed.doctors || DEFAULT_DATA.doctors;
       mergedDoctors = mergedDoctors.map((doc: any) => {
         if (doc.id === '1' && doc.name === 'Dr. Siddharth Sharma') {
-          return { ...doc, name: 'Dr. Vasu Koshle', description: doc.description.replace(/Dr\. Sharma/g, 'Dr. Koshle') };
+          doc.name = 'Dr. Vasu Koshle';
+          doc.description = doc.description.replace(/Dr\. Sharma/g, 'Dr. Koshle');
+        }
+        if (['1', '2', '5'].includes(doc.id) && doc.image.includes('unsplash.com')) {
+          const def = DEFAULT_DOCTORS.find(d => d.id === doc.id);
+          if (def) doc.image = def.image;
         }
         return doc;
       });
+
+      let mergedServices = parsed.services || [];
+      if (mergedServices.length === 0) {
+        mergedServices = DEFAULT_SERVICES;
+      } else {
+        mergedServices = mergedServices.map(s => {
+          if (['1', '2', '3', '4'].includes(s.id) && s.image.includes('unsplash.com')) {
+            const def = DEFAULT_SERVICES.find(ds => ds.id === s.id);
+            if (def) s.image = def.image;
+          }
+          return s;
+        });
+        
+        // Add new services if they don't exist
+        ['7', '8'].forEach(id => {
+          if (!mergedServices.find(s => s.id === id)) {
+            const def = DEFAULT_SERVICES.find(ds => ds.id === id);
+            if (def) mergedServices.push(def);
+          }
+        });
+      }
+
+      let mergedReviews = parsed.reviews || [];
+      if (mergedReviews.length === 0) {
+        mergedReviews = DEFAULT_REVIEWS;
+      } else {
+        mergedReviews = mergedReviews.map(r => {
+          if (!r.videoUrl) {
+            const def = DEFAULT_REVIEWS.find(dr => dr.id === r.id);
+            if (def) r.videoUrl = def.videoUrl;
+          }
+          return r;
+        });
+      }
 
       return {
         ...DEFAULT_DATA,
         ...parsed,
         generalImages: mergedGeneralImages,
         doctors: mergedDoctors,
-        services: parsed.services || DEFAULT_DATA.services
+        transformations: mergedTransformations,
+        services: mergedServices,
+        reviews: mergedReviews
       };
     }
     return DEFAULT_DATA;
@@ -261,6 +319,7 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     localStorage.setItem('vasu_bookings', JSON.stringify(bookings));
   }, [bookings]);
+
 
   useEffect(() => {
     localStorage.setItem('vasu_queries', JSON.stringify(queries));
