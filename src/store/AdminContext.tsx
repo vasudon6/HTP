@@ -321,7 +321,7 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
       }
 
       let mergedClinicContext = parsed.clinicContext;
-      if (!mergedClinicContext || mergedClinicContext.startsWith("Vasu Hair Transplant Clinic is Raipur's No. 1 clinic")) {
+      if (!mergedClinicContext || !mergedClinicContext.includes("Vasu Hair Transplant Clinic के एक बेहद स्मार्ट")) {
         mergedClinicContext = DEFAULT_DATA.clinicContext;
       }
       return {

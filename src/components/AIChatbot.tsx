@@ -59,10 +59,10 @@ ${publicData.clinicContext || 'No additional context provided by admin.'}
       if (response.ok) {
         setMessages(prev => [...prev, { role: 'model', text: data.reply, isBookingForm: data.showBookingForm }]);
       } else {
-        setMessages(prev => [...prev, { role: 'model', text: 'माफ़ कीजिए, कोई तकनीकी समस्या आई है।' }]);
+        setMessages(prev => [...prev, { role: 'model', text: 'Sorry, a technical error occurred.' }]);
       }
     } catch (error) {
-      setMessages(prev => [...prev, { role: 'model', text: 'माफ़ कीजिए, कनेक्शन में समस्या है।' }]);
+      setMessages(prev => [...prev, { role: 'model', text: 'Sorry, there is a connection problem.' }]);
     } finally {
       setIsLoading(false);
     }
@@ -120,7 +120,7 @@ ${publicData.clinicContext || 'No additional context provided by admin.'}
             <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-50">
               {messages.length === 0 && (
                 <div className="text-center text-slate-500 text-sm mt-4">
-                  नमस्ते! मैं क्लिनिक का AI असिस्टेंट हूँ। मैं आपकी कैसे मदद कर सकता हूँ?
+                  Hello! I am the clinic's AI assistant. How can I help you?
                 </div>
               )}
               {messages.map((msg, idx) => (
@@ -183,7 +183,7 @@ ${publicData.clinicContext || 'No additional context provided by admin.'}
                               return [...newMessages, { role: 'user', text: "Booking Details Submitted" }];
                             });
                             setTimeout(() => {
-                              setMessages(prev => [...prev, { role: 'model', text: "आपकी अपॉइंटमेंट सफलतापूर्वक बुक हो गई है। हम जल्द ही आपसे संपर्क करेंगे। धन्यवाद!" }]);
+                              setMessages(prev => [...prev, { role: 'model', text: "Your appointment has been successfully booked. We will contact you soon. Thank you!" }]);
                             }, 500);
                           
                         }} className="flex flex-col gap-3">
@@ -281,7 +281,7 @@ ${publicData.clinicContext || 'No additional context provided by admin.'}
                   type="text" 
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  placeholder="अपना सवाल पूछें..."
+                  placeholder="Ask your question..."
                   className="flex-1 bg-slate-50 border border-slate-200 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 transition-all text-slate-700"
                 />
                 <button 
